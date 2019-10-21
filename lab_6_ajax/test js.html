@@ -1,0 +1,25 @@
+        fetch('ajax_sample.json')
+        .then(res => res.json())
+        .then(res => res.map(country => country.name))
+        //.then(names => document.querySelector(".content").innerText = names);
+        .then(names => {
+              let contentHTML = document.querySelector(".content");
+
+              let list = document.createElement("OL");
+          
+              //list.innerHTML = "";
+
+              //make a deep copy so I can remove countries
+              //let randomArray = JSON.parse(JSON.stringify(countryJson));
+
+              for(i = 0; i < 50; i++){
+                let randomIndex = Math.floor(Math.random()*names.length)
+                let countryNode = document.createElement("LI");
+                let countryName = document.createTextNode(names[randomIndex].name);
+                names.splice(randomIndex, 1);
+                countryNode.appendChild(countryName);
+                list.appendChild(countryNode);
+              }
+               return list;
+        })
+        .then(list => document.querySelector(".content").appendChild(list));
