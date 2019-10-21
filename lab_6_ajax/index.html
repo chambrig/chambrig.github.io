@@ -28,19 +28,11 @@
         });
     }
     function loopCountries(countries){
-      //sessionStorage.setItem("countries", JSON.stringify(countries));
-
-      //const countryStr = sessionStorage.getItem("countries");
-      //const countryJson = JSON.parse(countryStr); 
 
       let contentHTML = document.querySelector(".content");
 
       let list = document.querySelector(".countryList");
       list.innerHTML = "";
-      //list.innerHTML = "";
-
-      //make a deep copy so I can remove countries
-      //let randomArray = JSON.parse(JSON.stringify(countryJson));
 
       for(i = 0; i < 15; i++){
         let randomIndex = Math.floor(Math.random()*countries.length)
