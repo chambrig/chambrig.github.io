@@ -39,10 +39,10 @@
       //make a deep copy so I can remove countries
       //let randomArray = JSON.parse(JSON.stringify(countryJson));
 
-      for(i = 0; i < 50; i++){
+      for(i = 0; i < 15; i++){
         let randomIndex = Math.floor(Math.random()*countries.length)
         let countryNode = document.createElement("LI");
-        let countryName = document.createTextNode(countries[randomIndex].name);
+        let countryName = document.createTextNode(countries[randomIndex]);
         countries.splice(randomIndex, 1);
         countryNode.appendChild(countryName);
         list.appendChild(countryNode);
