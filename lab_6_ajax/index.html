@@ -20,26 +20,30 @@
       fetch('ajax_sample.json')
         .then(res => res.json())
         .then(res => res.map(country => country.name))
-        .then(names => document.querySelector(".content").innerText = names);
+        //.then(names => document.querySelector(".content").innerText = names);
+        .then(names => {
+          loopCountries(names)
+        })
     }
-    function loopCountries(){
-      sessionStorage.setItem("countries", JSON.stringify(countries));
+    function loopCountries(countries){
+      //sessionStorage.setItem("countries", JSON.stringify(countries));
 
-      const countryStr = sessionStorage.getItem("countries");
-      const countryJson = JSON.parse(countryStr); 
+      //const countryStr = sessionStorage.getItem("countries");
+      //const countryJson = JSON.parse(countryStr); 
 
-      let list = document.getElementsByClassName("instructions")[0];
-      list.style.listStyle = "decimal";
-      list.innerHTML = "";
+      let contentHTML = document.querySelector(".content");
+
+      let list = document.createElement("OL");
+      //list.innerHTML = "";
 
       //make a deep copy so I can remove countries
-      let randomArray = JSON.parse(JSON.stringify(countryJson));
+      //let randomArray = JSON.parse(JSON.stringify(countryJson));
 
       for(i = 0; i < 50; i++){
-        let randomIndex = Math.floor(Math.random()*randomArray.length)
+        let randomIndex = Math.floor(Math.random()*countries.length)
         let countryNode = document.createElement("LI");
-        let countryName = document.createTextNode(randomArray[randomIndex].name);
-        randomArray.splice(randomIndex, 1);
+        let countryName = document.createTextNode(countries[randomIndex].name);
+        countries.splice(randomIndex, 1);
         countryNode.appendChild(countryName);
         list.appendChild(countryNode);
       }
