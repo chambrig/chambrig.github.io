@@ -19,8 +19,7 @@
     function loadData() {
       fetch('ajax_sample.json')
         .then(res => res.json())
-        //.then(res => res.map(country => country.name))
-        //.then(names => document.querySelector(".content").innerText = names);
+        .then(res => res.map(country => country.name))
         .then(names => {
           loopCountries(names)
         });
