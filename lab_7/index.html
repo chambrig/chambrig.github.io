@@ -40,6 +40,8 @@
         let id = busRoutesDict[i].route_id;
         let name = busRoutesDict[i].title;
         name = name.replace(id, "");
+        // removes the extra white space left over
+        name.trim();
         busRoutesDict[i].title = name;
       }
       return busRoutesDict;
@@ -62,7 +64,7 @@
 
     function changeHeader(busRoutesArray){
       let title = document.querySelector(".header");
-      let selectedRoute = busRoutesArray.find(item => item === "Route Name: Adelphi, Route ID: 108")
+      let selectedRoute = busRoutesArray.find(listItem => listItem === "Route Name: Adelphi, Route ID: 108")
       title.innerText = title.innerText + " " + selectedRoute;
       return busRoutesArray;
     }
