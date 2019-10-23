@@ -22,16 +22,21 @@
     function loadData() {
       fetch('https://api.umd.io/v0/bus/routes')
         .then(res => res.json())
+        // log parsed json
         .then(res => { 
           console.log(res)
           return res
         })
+        // take Ids out of the title field
         .then(res => seperateId(res))
+        // make an array of all routes and ids
         .then(res => res.map(busRoute => "Route Name: " + busRoute.title + ", Route ID: " + busRoute.route_id))
+        // add all elements of the route array to the ordered list
         .then(res => addToList(res))
+        // change the page's header to include one of the routes
         .then(res => changeHeader(res))
-        .then(res => console.log(res))
-        // .then(data => document.querySelector(".content").innerText = data);
+        // log out the route array 
+        .then(res => console.log(res));
     }
 
     //extra credit
