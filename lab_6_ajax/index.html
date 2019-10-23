@@ -22,7 +22,7 @@
     function loadData() {
       fetch('ajax_sample.json')
         .then(res => res.json())
-        .then(res => res.map(country => country.name))
+        .then(res => res.map(country => "Name: " + country.name + " Code: " + country.code))
         .then(names => {
           loopCountries(names)
         });
