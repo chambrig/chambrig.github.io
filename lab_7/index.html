@@ -39,13 +39,15 @@
             routeNode.appendChild(routeName);
             list.appendChild(routeNode);
           }
-          return res
+          return res;
         })
         .then(res => {
           let title = document.querySelector(".header");
           let selectedRoute = res.find(item => item === "Route Name: 108 Adelphi, Route ID: 108")
           title.innerText = title.innerText + " " + selectedRoute;
+          return res;
         })
+        .then(res => console.log(res))
         // .then(data => document.querySelector(".content").innerText = data);
     }
   </script>
