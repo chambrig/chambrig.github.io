@@ -20,6 +20,7 @@
       fetch('https://api.umd.io/v0/bus/routes')
         .then(res => res.json())
         .then(res => console.log(res))
+        .then(res => res.map(busRoute => "Route Name: " + country.name + ", Route ID: " + country.code))
         .then(data => document.querySelector(".content").innerText = data);
     }
   </script>
