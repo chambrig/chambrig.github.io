@@ -27,28 +27,42 @@
           return res
         })
         .then(res => res.map(busRoute => "Route Name: " + busRoute.title + ", Route ID: " + busRoute.route_id))
-        .then(res => {
-          let contentHTML = document.querySelector(".content");
-
-          let list = document.querySelector(".routeList");
-          list.innerHTML = "";
-
-          for(i = 0; i < res.length; i++){
-            let routeNode = document.createElement("LI");
-            let routeName = document.createTextNode(res[i]);
-            routeNode.appendChild(routeName);
-            list.appendChild(routeNode);
-          }
-          return res;
-        })
-        .then(res => {
-          let title = document.querySelector(".header");
-          let selectedRoute = res.find(item => item === "Route Name: 108 Adelphi, Route ID: 108")
-          title.innerText = title.innerText + " " + selectedRoute;
-          return res;
-        })
+        .then(res => addToList(res))
+        .then(res => changeHeader(res))
         .then(res => console.log(res))
         // .then(data => document.querySelector(".content").innerText = data);
+    }
+
+    function seperateId(busRoutesDict){
+      for(i = 0; i < busRoutesDict.length; i++){
+        let id = busRoutesDict[i].route_id;
+        let name = busRoutesDict[i].title;
+        name = name.replace(id, "");
+        busRoutesDict[i].title = name;
+      }
+      return busRoutesDict;
+    }
+
+    function addToList(busRoutesArray){
+      let contentHTML = document.querySelector(".content");
+
+      let list = document.querySelector(".routeList");
+      list.innerHTML = "";
+
+      for(i = 0; i < busRoutesArray.length; i++){
+        let routeNode = document.createElement("LI");
+        let routeName = document.createTextNode(busRoutesArray[i]);
+        routeNode.appendChild(routeName);
+        list.appendChild(routeNode);
+      }
+      return busRoutesArray;
+    }
+
+    function changeHeader(busRoutesArray){
+      let title = document.querySelector(".header");
+      let selectedRoute = busRoutesArray.find(item => item === "Route Name: 108 Adelphi, Route ID: 108")
+      title.innerText = title.innerText + " " + selectedRoute;
+      return busRoutesArray;
     }
   </script>
 </body>
