@@ -47,6 +47,7 @@
       return busRoutesDict;
     }
 
+    // adds all the routes to the list
     function addToList(busRoutesArray){
       let contentHTML = document.querySelector(".content");
 
@@ -62,6 +63,7 @@
       return busRoutesArray;
     }
 
+    // changes the page's header to include one of the routes
     function changeHeader(busRoutesArray){
       let title = document.querySelector(".header");
       let selectedRoute = busRoutesArray.find(listItem => listItem === "Route Name: Adelphi, Route ID: 108")
