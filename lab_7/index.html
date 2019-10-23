@@ -23,7 +23,7 @@
           console.log(res)
           return res
         })
-        .then(res => res.map(busRoute => "Route Name: " + country.name + ", Route ID: " + country.code))
+        .then(res => res.map(busRoute => "Route Name: " + busRoute.title + ", Route ID: " + busRoute.route_id))
         .then(data => document.querySelector(".content").innerText = data);
     }
   </script>
