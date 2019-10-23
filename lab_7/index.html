@@ -41,7 +41,7 @@
         let name = busRoutesDict[i].title;
         name = name.replace(id, "");
         // removes the extra white space left over
-        name.trim();
+        name = name.trim();
         busRoutesDict[i].title = name;
       }
       return busRoutesDict;
