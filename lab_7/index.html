@@ -72,6 +72,7 @@
     function changeHeader(busRoutesArray){
       let title = document.querySelector(".header");
       let selectedRoute = busRoutesArray.find(listItem => listItem === "Route Name: Adelphi, Route ID: 108")
+      title.innerText = "UMD Bus Routes";
       title.innerText = title.innerText + " " + selectedRoute;
       return busRoutesArray;
     }
