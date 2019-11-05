@@ -61,7 +61,6 @@ app.get('/api', (req, res) => {
   fetch(baseURL)
     .then((r) => r.json())
     .then((data) => {
-      //console.log(data);
       data = data.filter(course => course.course_id.includes("INST"))
       console.log(data)
       res.send({ data: data });
