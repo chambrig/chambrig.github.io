@@ -57,7 +57,7 @@ app.use(express.static('public'));
 // });
 
 app.get('/api', (req, res) => {
-  const baseURL = 'https://api.umd.io/v0/courses/list';
+  const baseURL = 'https://api.umd.io/v0/courses/list?semester=201908';
   fetch(baseURL)
     .then((r) => r.json())
     .then((data) => {
